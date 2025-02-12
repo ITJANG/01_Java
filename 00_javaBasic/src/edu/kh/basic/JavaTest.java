@@ -1,6 +1,7 @@
 package edu.kh.basic;
 
 // git 테스트
+// git 테스트 2
 
 //한줄
 /*
