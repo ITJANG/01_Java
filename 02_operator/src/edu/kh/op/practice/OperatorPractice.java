@@ -57,9 +57,16 @@ public class OperatorPractice {
 		System.out.print("수학 : ");
 		int math = sc.nextInt();
 		System.out.println();
+		double avg = (kor + eng + math)/3.0;
 		
-		System.out.printf("합계 : %d\n평균 : %.1f"
-				, kor + eng + math, (kor + eng + math)/3.0);
+		System.out.printf("합계 : %d\n평균 : %.1f\n"
+				, kor + eng + math, avg);
+		
+		// 각 과목이 40점 이상, 평균 60점이상 합격
+		// 그외 불합격
+		
+		boolean result = (kor >= 40) && (eng >= 40) && (math >= 40) && (avg >= 60);
+		System.out.printf("%s", result ? "합격":"불합격");
 		
 	}
 	

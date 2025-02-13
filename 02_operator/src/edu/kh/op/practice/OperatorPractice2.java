@@ -15,9 +15,12 @@ public class OperatorPractice2 {
 		
 		System.out.print("당신의 나이는 ? : ");
 		int age = sc.nextInt();
-		System.out.printf("%s", (age >= 20 ? "저는 성인 입니다\n" : "저는 미성년자 입니다\n") );
-		System.out.printf("%s", (age >= 13 && age <= 19 ? "청소년입니까? true\n" : "청소년입니까? false\n") );
-		System.out.printf("%s", (age >= 65 || age <= 12 ? "노인이거나 어린이 입니까 true\n" : "노인이거나 어린이 입니까? false\n") );
+		System.out.printf("%s", (age >= 20 ? 
+				"저는 성인 입니다\n" : "저는 미성년자 입니다\n") );
+		System.out.printf("%s", (age >= 13 && age <= 19 ? 
+				"청소년입니까? true\n" : "청소년입니까? false\n") );
+		System.out.printf("%s", (age >= 65 || age <= 12 ? 
+				"노인이거나 어린이 입니까 true\n" : "노인이거나 어린이 입니까? false\n") );
 		
 	}
 	
