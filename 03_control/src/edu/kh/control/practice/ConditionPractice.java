@@ -159,4 +159,46 @@ public class ConditionPractice {
 		System.out.print(result);
 		
 	}
+	public void practice6() {
+		String product1 = "사과";
+		int price1 = 1000;
+		String product2 = "참외";
+		int price2 = 2000;
+		String product3 = "수박";
+		int price3 = 3000;
+		String product4 = "바나나";
+		int price4 = 4000;
+		int choice;
+		String cartProduct = "";
+		int cartPrice = 0;
+		
+		System.out.println("상품을 골라주세요");
+		System.out.printf("1. %s / 2. %s\n3. %s / 4. %s", product1, product2, product3, product4);
+		choice = sc.nextInt();
+		
+		if (choice < 1 || choice > 4) 
+			System.out.println("존재하지 않는 상품");
+		else
+			switch (choice) {
+			case 1:
+				cartProduct = product1;
+				cartPrice = price1;
+				break;
+			case 2:
+				cartProduct = product2;
+				cartPrice = price2;
+				break;
+			case 3:
+				cartProduct = product3;
+				cartPrice = price3;
+				break;
+			default:
+				cartProduct = product4;
+				cartPrice = price4;
+			}
+			
+			System.out.printf("선택한 상품 : %s\n", cartProduct);
+			System.out.printf("가격 : %d\n", cartPrice);
+			
+	}
 }
