@@ -8,8 +8,10 @@ public class LoopRun {
 		// TODO Auto-generated method stub
 
 		ForExample fe = new ForExample();
+		WhileExample we = new WhileExample();
 		
-		fe.ex10();
+		
+		we.ex1();
 	}
 
 }
