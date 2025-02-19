@@ -269,15 +269,24 @@ public class PracticeService {
 	public void practice13() {
 
 		int count = 0;
-
+		boolean flag = true;
 		System.out.print("문자열 : ");
 		String input = sc.nextLine();
 
 		char arr[] = new char[input.length()];
 
 		for (int i = 0; i < input.length(); i++) {
-			arr[i] = input.charAt(i);
-			count++;
+			for(int k = 0; k < i; k++) {
+				if(arr[k] == input.charAt(i)) {
+					flag = false;
+					break;
+				} else 
+					flag = true;
+			}
+			if(flag) {
+				arr[i] = input.charAt(i);
+				count++;
+			}
 		}
 		System.out.print("문자열에 있는 문자 : ");
 		for (int j = 0; j < arr.length; j++) {
@@ -323,9 +332,9 @@ public class PracticeService {
 					flag2 = false;
 					System.out.print("더 입력하고 싶은 개수 : ");
 					inputCount = sc.nextInt();
+					sc.nextLine();
 					input += inputCount;
 					arrStr = Arrays.copyOf(arrStr, input);
-					sc.nextLine();
 				} else if (inputMore == 'N' | inputMore == 'n') {
 					flag = false;
 					flag2 = false;
