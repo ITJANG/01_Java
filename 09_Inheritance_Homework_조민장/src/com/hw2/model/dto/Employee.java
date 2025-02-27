@@ -13,7 +13,8 @@ public class Employee extends Person{
 	@Override
 	public String getInfo() {
 		// TODO Auto-generated method stub
-		return null;
+		return String.format("ID : %s, 이름 : %s , 직책 : %s", 
+				super.getId(), super.getName(), position);
 	}
 	
 	public String getPosition() {
