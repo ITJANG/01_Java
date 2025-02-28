@@ -1,12 +1,17 @@
 package edu.kh.collection.pack1.model.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 import edu.kh.collection.pack1.model.dto.Student;
 
+/**
+ * 
+ */
 public class StudentService {
 	
 	// java.util.List 인터페이스 : List에 반드시 필요한 필수 기능을 모아둔 인터페이스
@@ -101,10 +106,10 @@ public class StudentService {
 				case 2: selectAll(); break;
 				case 3: System.out.println(updateStudent()); break;
 				case 4: System.out.println(removeStudent()); break;
-				case 5: //searchName1(); break;
-				case 6: //searchName2(); break;
-				case 7: //sortByAger(); break;
-				case 8: //sortByName(); break;
+				case 5: searchName1(); break;
+				case 6: searchName2(); break;
+				case 7: sortByAge(); break;
+				case 8: sortByName(); break;
 				case 0: System.out.println("프로그램 종료.."); break;
 				default : System.out.println("메뉴에서 고르시오");
 				}
@@ -248,7 +253,7 @@ public class StudentService {
 				return temp.getName() + "의 정보가 변경되었습니다";
 			}
 		}
-			/** 4. 학생 정보 제거 메서드
+		/** 4. 학생 정보 제거 메서드
 			 *
 			 * 수정과 같은 검사 후
 			 * 삭제 시
@@ -259,7 +264,7 @@ public class StudentService {
 			 *
 			 * @return
 			 */
-			public String removeStudent() {
+		public String removeStudent() {
 				// Student List.remove(int index);
 				// 리스트에서 index번째 요소를 제거
 				// 이 때 제거된 요소가 바환됨
@@ -291,5 +296,162 @@ public class StudentService {
 				return "취소";
 				
 			}
+		
+		/**
+		 * 5. 이름이 일치하는 학생을 찾아서 조회하는 메서드(완전 일치)
+		 * 
+		 * - 검색할 이름을 입력 받아 studentList에서 꺼내온
+		 *  Student 객체의 name 값이 같은지 비교
+		 *  
+		 * - 일치하는 경우 Student 객체 출력
+		 * - 일치하는게 없다면 "검색 결과가 없습니다" 출력
+		 * 
+		 */
+		public void searchName1() {
+			
+			System.out.println("====학생 검색(이름 완전 일치)====");
+			
+			System.out.print("검색할 이름 입력 : ");
+			String input = sc.next();
+			
+			boolean flag = true;
+			
+			for(Student std : studentList) {
+				
+				if(input.equals(std.getName())) {
+					System.out.println(std);
+					flag = false;
+				}
+				
+			}
+			
+			if(flag)
+				System.out.println("검색 결과 없음");
+			
+		}
+		
+		/**
+		 * 6. 이름에 특정 문자열이 포함되는 학생을 찾아서 조회
+		 * 
+		 * 문자열 입력 받아 studentList에서 꺼내온
+		 * Student 객체의 name 값에 포함되는 문자열 출력
+		 * 
+		 * - 포함되는 학생 객체 찾은 경우 Student 객체 출력
+		 * - 없다면 "검색 결과 없음" 출력
+		 */
+		public void searchName2() {
+			
+			System.out.println("====학생 검색(이름 부분 포함)====");
+			
+			System.out.println("이름에 포함되는 문자열 입력 : ");
+			String input = sc.next();
+			
+			boolean flag = true;
+			
+			for(Student std : studentList) {
+				
+				// boolean String.contains(문자열) : String에 문자열 포함되어 있으면 true
+				if(std.getName().contains(input)) {
+					System.out.println(std);
+					
+					flag = false;
+				}
+				
+			}
+			
+			if(flag)
+				System.out.println("검색 결과 없음");
+			
+		}
+
+		/*
+		 * List 정렬법
+		 * 
+		 * 1. Comparable 인터페이스 상속받아 compareTo() 메서드 재정의
+		 * 	Student에 Comparable 인터페이스를 상속받아 오버라이딩한 compareTo()에
+		 * 	정의한 대로 정렬됨
+		 * 
+		 * 2. Comparator 클래스에 의한 정렬 compare() 사용 (익명 내부 클래스 이용)
+		 * 	
+		 * 	익명 내부 클래스 : 1회용 이름 없는 클래스를 즉석에서 선언
+		 * 	객체를 생성하면서 바로 구현 내용을 정의할 수 있음
+		 * 	
+		 * 	익명 내부 클래스 장점
+		 * 	코드 간결화(별도로 클래스를 만들지 않아도 될 때 사용)
+		 * 	즉시 사용(1회용 목적인 Comparator 등을 정의 할 때 유용)
+		 *  지역화(특정 메서드 안에서만 사용 할 때)
+		 * 
+		 * 
+		 */
+		
+		/**
+		 * 7. 나이에 따라 오름차순 정렬
+		 * 
+		 * 
+		 */
+		public void sortByAge() {
+			
+			Collections.sort(studentList);
+			
+			for(Student std : studentList) {
+				System.out.println(std);
+			}
+			
+		}
+		
+		/**
+		 * 이름에 따라 정렬하기
+		 */
+		public void sortByName() {
+										// 익명 내부 클래스 Comparator 인터페이스를 상속받아
+										// 구현한 구현체(== 클래스)
+			Collections.sort(studentList, new Comparator<Student>() {
+
+				@Override
+				public int compare(Student o1, Student o2) {
+					// 이름 비교
+					return o1.getName().compareTo(o2.getName());
+					// name은 String형이라 compareTo로 비교
+					
+					// Stirng.compareTo() : 자바에서 객체를 비교하는 메서드
+					// (String이 Comparable을 상속받아 재정의해둔 compareTo() 메서드를 이용)
+					
+					// compareTo() : 두 객체를 비교하고 순서 결정
+					// 반환값 : 0(같음), 양수(왼쪽이 더 큼), 음수(왼쪽이 더 작음)
+					
+				}
+				
+			});
+			
+			for(Student std : studentList) {
+				System.out.println(std);
+			}
+			
+		}
+
+
+
+
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
