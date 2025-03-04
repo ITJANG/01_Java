@@ -86,11 +86,12 @@ public class Library {
 		System.out.print("수정할 도서 번호를 입력하세요 : ");
 		int inputbNo = sc.nextInt();
 		int input = 0;
-		int indexB;
+		int indexB = 0;
 		
 		for(int i = 0; i < books.size(); i++) {
 			if(books.get(i).getbNo() == inputbNo)
 				indexB = i;
+				
 			else {
 				System.out.println("존재하지 않는 도서 번호");
 				return;
@@ -108,19 +109,28 @@ public class Library {
 			switch(input) {
 			case 1: 
 				System.out.println("====도서명 수정====");
-				System.out.print("수정할 이름을 입력하세요 : ");
+				System.out.print("수정할 도서명을 입력하세요 : ");
 				String title = sc.nextLine();
-				books.get(indexB);
-			    books.set(indexB, new Book( bNo, title, author, price, publish));
+				books.get(indexB).setTitle(title);
 				break;
 			case 2:
 				System.out.println("====도서 저자 수정====");
+				System.out.print("수정할 저자명을 입력하세요 : ");
+				String author = sc.nextLine();
+				books.get(indexB).setAuthor(author);
 				break;
 			case 3:
 				System.out.println("====도서 가격 수정====");
+				System.out.print("수정할 가격을 입력하세요 : ");
+				int price = sc.nextInt();
+				sc.nextLine();
+				books.get(indexB).setPrice(price);
 				break;
 			case 4:
 				System.out.println("====도서 출판사 수정====");
+				System.out.print("수정할 출판사명을 입력하세요 : ");
+				String publish = sc.nextLine();
+				books.get(indexB).setPublish(publish);
 				break;
 			case 0:
 				System.out.println("수정을 종료합니다");
@@ -130,7 +140,7 @@ public class Library {
 			}
 			
 		} while(input != 0);
-		
+		System.out.println("수정 완료");
 	}
 	
 	// 도서 삭제
