@@ -172,10 +172,12 @@ public class ToyFactory {
 		for(int i = 1; i <= materials.size(); i++) {
 			System.out.println(i + " : " + materials.get(i));
 		}
+		
 		System.out.println("===============");
 		System.out.print("재료 고유번호(Key) 입력 : ");
 		int key = sc.nextInt();
 		sc.nextLine(); //개행문자 제거
+		
 		System.out.print("재료명 입력 : ");
 		String name = sc.nextLine();
 		
