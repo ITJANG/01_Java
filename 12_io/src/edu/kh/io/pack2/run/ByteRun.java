@@ -18,13 +18,13 @@ public class ByteRun {
 		 * System.out.println(sb.hashCode()); //1706377736
 		 */		
 		ByteService bs = new ByteService();
-//		bs.fileByteOutput();
+		bs.fileByteOutput();
 //		bs.bufferedFileByteOutput();
 //		bs.fileByteInput2();
 //		bs.bufferedFileByteInput();
 //		bs.readProperties();
 //		bs.readProperties();
-		bs.fileCopy();
+//		bs.fileCopy();
 	}
 
 }
